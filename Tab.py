@@ -60,6 +60,18 @@ for j in range(4,11):
 
 print(nn_resoult)
 
+
+bf_resoult=[]
+i=0
+for j in range(4,11):
+    start=time.time_ns()
+    perm_tabel = brute.perm(j)
+    road = brute.brute_road(matrix[i], perm_tabel)
+    stop=time.time_ns()
+    bf_resoult.append([j,road[0],(stop-start)])
+    i+=1
+
+print(bf_resoult)
 # matrix = distance_matrix(tab, 4)
 # near = NN.nearest(matrix, 4)
 # print(matrix)
