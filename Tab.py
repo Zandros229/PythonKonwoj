@@ -3,6 +3,8 @@ import itertools
 import math
 import random
 import heapq
+import time
+
 import numpy
 import brute
 import dfs
@@ -30,33 +32,47 @@ def distance_list(a, b, size):
 def distance_matrix(tab, number_of_points):
     # matrix = [[None] * number_of_points] * number_of_points
     matrix = numpy.zeros((number_of_points, number_of_points))
-    print(matrix)
     for index in range(number_of_points):
         matrix[index] = distance_list(tab[index], tab, number_of_points)
     return matrix
 
 
 
-
-
-tab = random_points(4)
-print(tab)
 # NN
-matrix = distance_matrix(tab, 4)
-near = NN.nearest(matrix, 4)
-print(matrix)
-print(NN.nearest(matrix, 4))
+
+nn_resoult=[]
+tab=[]
+matrix=[]
+for j in range(4,11):
+    tab.append(random_points(j))
+i=0
+for j in range(4,11):
+     matrix.append(distance_matrix(tab[i], j))
+     i+=1
+i=0
+for j in range(4,11):
+    start=time.time_ns()
+    near = NN.nearest(matrix[i], j)
+    stop=time.time_ns()
+    nn_resoult.append([j,near,(stop-start)])
+    i+=1
+
+
+print(nn_resoult)
+
+# matrix = distance_matrix(tab, 4)
+# near = NN.nearest(matrix, 4)
+# print(matrix)
+# print(NN.nearest(matrix, 4))
 # Brute Force
 
-perm_tabel = brute.perm(4)
-road = brute.brute_road(matrix, perm_tabel)
-print(perm_tabel)
-print(brute.brute_road(matrix, perm_tabel))
-
-
-#DFS
-distance=dfs.road_dfs(4)
-print(dfs.road_dfs(4))
-distance=dfs.dfs_distance(matrix,distance)
-print(distance)
-
+# perm_tabel = brute.perm(4)
+# road = brute.brute_road(matrix, perm_tabel)
+# print(perm_tabel)
+# print(brute.brute_road(matrix, perm_tabel))
+#
+# # DFS
+# distance = dfs.road_dfs(4)
+# print(dfs.road_dfs(4))
+# distance = dfs.dfs_distance(matrix, distance)
+# print(distance)

@@ -1,3 +1,6 @@
+import copy
+
+
 def nearest(matrix, number_of_points):
     used = [None] * (number_of_points + 1)
     tab = copy.deepcopy(matrix)

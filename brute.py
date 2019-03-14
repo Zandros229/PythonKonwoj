@@ -25,4 +25,4 @@ def brute_road(matrix, perm_tab):
 
 
 perm_tabel = perm(4)
-print(perm_tabel)
+# print(perm_tabel)
