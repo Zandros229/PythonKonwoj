@@ -13,7 +13,7 @@ def perm(number_of_points):
     return tab;
 
 
-def brute_road(matrix, perm_tab, number_of_points):
+def brute_road(matrix, perm_tab):
     road_tab = []
     for index in range(len(perm_tabel)):
         road = 0

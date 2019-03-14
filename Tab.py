@@ -5,6 +5,7 @@ import random
 import heapq
 import numpy
 import brute
+import dfs
 
 
 def random_points(number_of_Points):
@@ -77,6 +78,14 @@ print(nearest(matrix, 4))
 # Brute Force
 
 perm_tabel = brute.perm(4)
-road = brute.brute_road(matrix, perm_tabel, 4)
+road = brute.brute_road(matrix, perm_tabel)
 print(perm_tabel)
-print(brute.brute_road(matrix, perm_tabel, 4))
+print(brute.brute_road(matrix, perm_tabel))
+
+
+#DFS
+distance=dfs.road_dfs(4)
+print(dfs.road_dfs(4))
+distance=dfs.dfs_distance(matrix,distance)
+print(distance)
+
