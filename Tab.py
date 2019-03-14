@@ -34,41 +34,37 @@ def distance_matrix(tab, number_of_points):
 
 def nearest(matrix, number_of_points):
     used = [None] * (number_of_points + 1)
-    tab =copy.deepcopy(matrix)
+    tab = copy.deepcopy(matrix)
     used[0] = 0
     road = 0
-    j=1
+    j = 1
     helper = False
     index = 0
     helper2 = False
     for i in range(number_of_points):
-        tab[index].sort();
-    while helper == False:
-        helper2=False
+        tab[index].sort()
+    while not helper:
+        helper2 = False
         i = 1
-        while helper2 == False:
+        while not helper2:
             value = tab[index][i]
             temp = (matrix[index] == value)
-            point =list(temp).index(True)
-            if(point not in used):
-                used[j]=point
-                road+=value
-                helper2=True
-                j+=1
-                index=point
+            point = list(temp).index(True)
+            if point not in used:
+                used[j] = point
+                road += value
+                helper2 = True
+                j += 1
+                index = point
             else:
-                i+=1
-        if used[number_of_points-1]!=None:
-            helper=True
+                i += 1
+        if used[number_of_points - 1] is not None:
+            helper = True
             print(road)
-            road+=matrix[used[number_of_points-1]][0]
-            used[number_of_points]=0
+            road += matrix[used[number_of_points - 1]][0]
+            used[number_of_points] = 0
     print(used)
     return road
-
-
-
-
 
 
 tab = random_points(4)
