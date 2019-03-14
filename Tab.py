@@ -1,14 +1,16 @@
 import copy
+import itertools
 import math
 import random
 import heapq
 import numpy
+import brute
 
 
 def random_points(number_of_Points):
     tab = [[None] * 3] * number_of_Points
     for index in range(number_of_Points):
-        tab[index] = [index, math.trunc(random.uniform(1, 100)), math.trunc(random.uniform(1, 100))]
+        tab[index] = [index, random.uniform(1, 100), random.uniform(1, 100)]
     return tab
 
 
@@ -60,16 +62,21 @@ def nearest(matrix, number_of_points):
                 i += 1
         if used[number_of_points - 1] is not None:
             helper = True
-            print(road)
             road += matrix[used[number_of_points - 1]][0]
             used[number_of_points] = 0
-    print(used)
     return road
 
 
 tab = random_points(4)
 print(tab)
+# NN
 matrix = distance_matrix(tab, 4)
+near = nearest(matrix, 4)
 print(matrix)
-
 print(nearest(matrix, 4))
+# Brute Force
+
+perm_tabel = brute.perm(4)
+road = brute.brute_road(matrix, perm_tabel, 4)
+print(perm_tabel)
+print(brute.brute_road(matrix, perm_tabel, 4))
