@@ -72,6 +72,19 @@ for j in range(4,11):
     i+=1
 
 print(bf_resoult)
+
+
+dfs_resoult=[]
+i=0
+for j in range(4,11):
+    start=time.time_ns()
+    dfs_tabel = dfs.road_dfs(j)
+    dfs_road = dfs.dfs_distance(matrix[i], dfs_tabel)
+    stop=time.time_ns()
+    dfs_resoult.append([j,dfs_road,(stop-start)])
+    i+=1
+
+print(dfs_resoult)
 # matrix = distance_matrix(tab, 4)
 # near = NN.nearest(matrix, 4)
 # print(matrix)
